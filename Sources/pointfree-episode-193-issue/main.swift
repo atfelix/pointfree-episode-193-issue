@@ -65,15 +65,15 @@ let counterActor3 = CounterActor()
 
 Thread.sleep(forTimeInterval: 4)
 for _ in 1 ... 10 {
-	Task.detached {
+	Task.init {
 		await counterActor3.increment()
 	}
-	Task.detached {
+	Task.init {
 		await counterActor3.decrement()
 	}
 }
 
-Task.detached {
+Task.init {
 	await print("Task.init", "counterActor2.count  ", counterActor3.count)
 	await print("Task.init", "counterActor2.maximum", counterActor3.maximum)
 }
